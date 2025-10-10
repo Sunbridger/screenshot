@@ -1,0 +1,18 @@
+{
+  "name": "screenshot",
+  "version": "1.0.0",
+  "description": "每日截图，类别不限",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webshot": "^0.18.0"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.0"
+  }
+}

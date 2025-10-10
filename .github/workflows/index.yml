@@ -1,0 +1,27 @@
+name: 截图提醒📺
+
+on:
+  schedule:
+    # 每天 UTC 时间 3:00 运行（北京时间 10:00）
+    - cron: '0 3 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  send-love-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ 检出代码
+        uses: actions/checkout@v4
+
+      - name: ⎔ 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 📦 安装依赖
+        run: npm install
+
+      - name: 截图开启
+        run: node .github/scripts/screenshot.js
+
