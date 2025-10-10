@@ -27,32 +27,6 @@ jobs:
       - name: 📦 安装依赖
         run: yarn install --frozen-lockfile
 
-      - name: 🖼️ 执行截图
-        run: node .github/scripts/screenshot.js
-
-      - name: 💾 检查更改并提交
-        id: commit-check
-        run: |
-          if [ -n "$(git status --porcelain README.md assets/)" ]; then
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git add README.md assets/
-            git commit -m "📸 更新每日截图 - $(date +'%Y-%m-%d')"
-            echo "hasChanges=true" >> $GITHUB_OUTPUT
-          else
-            echo "hasChanges=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: 🚀 推送更改
-        if: steps.commit-check.outputs.hasChanges == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
-          cache: 'yarn'
-
-      - name: 📦 安装依赖
-        run: yarn install
 
       - name: 🖼️ 执行截图
         run: node .github/scripts/screenshot.js
