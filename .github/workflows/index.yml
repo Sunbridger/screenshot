@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # 允许手动触发
 
 jobs:
-  send-love-reminder:
+  screenshot:
     runs-on: ubuntu-latest
     steps:
       - name: 🛎️ 检出代码
@@ -16,7 +16,7 @@ jobs:
       - name: ⎔ 设置 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '12.22.12'
           cache: 'npm'
 
       - name: 📦 安装依赖
