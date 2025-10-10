@@ -17,11 +17,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '12.22.12'
-          cache: 'npm'
+          cache: 'yarn' # 改为 yarn 缓存
 
       - name: 📦 安装依赖
-        run: npm install
+        run: yarn install
 
       - name: 截图开启
         run: node .github/scripts/screenshot.js
-
