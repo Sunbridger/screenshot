@@ -2,7 +2,7 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-const prefixDir = '../../data';
+const baiduPrefixDir = '../../data-baidu';
 
 async function getBaiduHotSearch() {
   const url = 'https://top.baidu.com/board';
@@ -43,7 +43,7 @@ async function main() {
     console.log('🚀 开始获取百度热搜数据...');
     const data = await getBaiduHotSearch();
     const today = new Date().toISOString().split('T')[0];
-    const filePath = path.join(__dirname, prefixDir, `${today}.json`);
+    const filePath = path.join(__dirname, baiduPrefixDir, `${today}.json`);
 
     await saveDataToFile(data, filePath);
     console.log(`✅ 数据已保存到: ${filePath}`);
