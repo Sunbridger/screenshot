@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # 允许手动触发
 
 jobs:
-  send-love-reminder:
+  baidu-hot-search:
     runs-on: ubuntu-latest
     steps:
       - name: 🛎️ 检出代码
