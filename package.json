@@ -10,9 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "webshot": "^0.18.0"
-  },
-  "resolutions": {
-    "graceful-fs": "^4.2.0"
+    "axios": "^1.12.2"
   }
 }
