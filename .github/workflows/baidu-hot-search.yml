@@ -2,9 +2,12 @@ name: Baidu Hot Search
 
 on:
   schedule:
-    # 每天 UTC 时间 0 点运行 (北京时间 8 点)
-    - cron: '0 0 * * *'
+    # 每天UTC时间2点、4点、6点、8点运行（对应北京时间10点、12点、14点、16点）
+    - cron: '0 2,4,6,8 * * *'
   workflow_dispatch: # 允许手动触发
+  push:
+    branches:
+      - main
 
 jobs:
   BaiduHotSearch:
