@@ -136,5 +136,5 @@ https://raw.githubusercontent.com/Sunbridger/screenshot/main/data-baidu/2025-10-
 ---
 
 <p align="center">
-  <em>数据更新于: $(date +'%Y-%m-%d %H:%M:%S')</em>
+  <em>数据更新于: 2025-10-16 09:46:38
 </p>
