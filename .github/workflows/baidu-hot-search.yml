@@ -51,6 +51,7 @@ jobs:
           sed -i "s/数据更新于: .*/数据更新于: ${CURRENT_TIME}/" README.md
           git add README.md
           git commit -m "更新README时间戳" || echo "无时间戳变更"
+          git push
 
       - name: ✅ 任务完成
         run: |
