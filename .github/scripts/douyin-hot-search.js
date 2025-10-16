@@ -37,9 +37,9 @@ async function getDouyinHotSearch() {
     id: v.sentence_id,
     title: v.word,
     timestamp: v.event_time,
-    hot: v.hot_value,
-    url: `https://www.douyin.com/hot/${v.sentence_id}`,
-    mobileUrl: `https://www.douyin.com/hot/${v.sentence_id}`,
+    hot: v?.hot_value,
+    url: v?.word_cover?.url_list?.[0],
+    mobileUrl: v?.word_cover?.url_list?.[0],
   }));
 }
 
