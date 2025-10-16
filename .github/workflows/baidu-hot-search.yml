@@ -40,6 +40,7 @@ jobs:
           if git diff-index --quiet HEAD --; then
             echo "没有数据变更"
           else
+            git pull --no-rebase origin main  # 先拉取远程变更
             git commit -m "📈 更新百度热搜数据 $(date +'%Y-%m-%d')"
             git push
           fi
