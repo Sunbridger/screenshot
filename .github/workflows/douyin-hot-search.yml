@@ -45,6 +45,13 @@ jobs:
             git push
           fi
 
+      - name: 更新README时间戳
+        run: |
+          CURRENT_TIME=$(date +'%Y-%m-%d %H:%M:%S')
+          sed -i "s/数据更新于: .*/数据更新于: ${CURRENT_TIME}/" README.md
+          git add README.md
+          git commit -m "更新README时间戳" || echo "无时间戳变更"
+
       - name: ✅ 任务完成
         run: |
           echo "抖音热搜数据获取任务完成"

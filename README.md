@@ -17,15 +17,15 @@
 
 采集的数据存储在`data-douyin/`目录下，按日期命名，例如：
 
-
+```
 data-douyin/
 ├── 2025-10-16.json
 └── 2025-10-17.json
-
+```
 
 每个JSON文件包含当天的抖音热搜榜单数据，数据结构如下：
 
-json
+```json
 [
   {
     "id": "123456789",
@@ -36,6 +36,7 @@ json
     "mobileUrl": "https://example.com/cover.jpg"
   }
 ]
+```
 
 
 ## 🛠️ 如何使用
@@ -43,20 +44,23 @@ json
 ### 本地运行
 
 1. 克隆仓库：
+```
    bash
    git clone https://github.com/Sunbridger/screenshot.git
    cd screenshot
-
+```
 
 2. 安装依赖：
+```
    bash
    npm install
-
+```
 
 3. 运行采集脚本：
+```
    bash
    node .github/scripts/douyin-hot-search.js
-
+```
 
 ### GitHub Actions 自动运行
 
@@ -73,13 +77,14 @@ json
 您可以通过以下方式使用这些数据：
 
 1. **直接引用原始JSON文件**：
-   javascript
+   ```javascript
    const data = require('./data-douyin/2025-10-16.json');
+   ```
 
 
 2. **通过GitHub Raw URL访问**：
-   markdown
-   https://raw.githubusercontent.com/Sunbridger/screenshot/main/data-douyin/2025-10-16.json
+
+https://raw.githubusercontent.com/Sunbridger/screenshot/main/data-douyin/2025-10-16.json
 
 
 3. **构建自己的数据分析工具**：基于历史数据进行分析和可视化
@@ -89,9 +94,13 @@ json
 欢迎贡献代码或提出改进建议：
 
 1. Fork本仓库
+
 2. 创建您的分支 (`git checkout -b feature/AmazingFeature`)
+
 3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
+
 5. 打开Pull Request
 
 ## 📜 许可证
