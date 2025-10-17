@@ -1,6 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const sendBarkNotification = require('./sendbark');
 
 const baiduPrefixDir = '../../data-baidu';
 
@@ -39,16 +40,24 @@ async function saveDataToFile(data, filePath) {
 }
 
 async function main() {
+  const today = new Date().toISOString().split('T')[0];
   try {
     console.log('🚀 开始获取百度热搜数据...');
     const data = await getBaiduHotSearch();
-    const today = new Date().toISOString().split('T')[0];
     const filePath = path.join(__dirname, baiduPrefixDir, `${today}.json`);
 
     await saveDataToFile(data, filePath);
     console.log(`✅ 数据已保存到: ${filePath}`);
+    sendBarkNotification({
+      title: `百度热搜数据定时脚本完成✅ ${today}`,
+      body: `百度热搜数据定时脚本完成✅ ${today}`,
+    });
     return filePath; // 返回文件路径便于其他模块使用
   } catch (error) {
+    sendBarkNotification({
+      title: `❌ 获取百度数据失败 ${today}`,
+      body: `❌ 获取百度数据失败 ${today}`,
+    });
     console.error('❌ 获取数据失败:', error);
     throw error; // 抛出错误以便调用方处理
   }
