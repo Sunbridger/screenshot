@@ -1,0 +1,74 @@
+name: Update Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      triggered_by:
+        description: '触发来源'
+        required: false
+        default: 'web_interface'
+        type: string
+      target_date:
+        description: '目标日期'
+        required: false
+        default: ''
+        type: string
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ 检出代码
+        uses: actions/checkout@v4
+        with:
+          # 重要：需要设置 token 权限来推送更改
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print trigger info
+        run: |
+          echo "触发来源: ${{ github.event.inputs.triggered_by }}"
+          echo "目标日期: ${{ github.event.inputs.target_date }}"
+          echo "触发时间: ${{ github.event.head_commit.timestamp }}"
+
+
+      - name: ⎔ 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.20.2'
+          cache: 'npm'
+
+      - name: 📦 安装依赖
+        run: npm install
+
+
+      - name: 🚀 开始跑脚本
+        run: |
+          # 这里执行您的数据更新脚本
+          echo "开始更新抖音数据..."
+          node .github/scripts/douyin-hot-search.js
+          echo "结束更新抖音数据..."
+
+          echo "开始更新百度数据..."
+          node .github/scripts/baidu-hot-search.js
+          echo "结束更新百度数据..."
+
+
+      - name: 💾 提交数据到仓库
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add data-baidu/
+          git add data-douyin/
+          # 检查是否有文件变更
+          if git diff-index --quiet HEAD --; then
+            echo "没有数据变更"
+          else
+            git pull --no-rebase origin main  # 先拉取远程变更
+            git commit -m "📈 更新百度&抖音热搜数据 $(date +'%Y-%m-%d')"
+            git push
+          fi
+
+      - name: ✅ 任务完成
+        run: |
+          echo "百度&抖音热搜数据获取任务完成"
+          echo "完成时间: $(date)"
