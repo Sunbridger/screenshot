@@ -1,3 +1,6 @@
+const axios = require('axios');
+
+
 // 发送 Bark 通知
 async function sendBarkNotification({
   title,
