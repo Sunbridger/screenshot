@@ -6,7 +6,7 @@ const sendBarkNotification = require('./sendbark');
 const baiduPrefixDir = '../../data-baidu';
 
 async function getBaiduHotSearch() {
-  const url = 'https://top.baidu.com/board';
+  const url = 'https://top.baidu.com/board?tab=realtime';
   const result = await axios.get(url, {
     headers: {
       'User-Agent':
