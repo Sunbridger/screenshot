@@ -61,10 +61,10 @@ async function main() {
 
     await saveDataToFile(data, filePath);
     console.log(`✅ 数据已保存到: ${filePath}`);
-    sendBarkNotification({
-      title: `抖音热搜数据定时脚本完成✅ ${today}`,
-      body: `抖音热搜数据定时脚本完成✅ ${today}`,
-    });
+    // sendBarkNotification({
+    //   title: `抖音热搜数据定时脚本完成✅ ${today}`,
+    //   body: `抖音热搜数据定时脚本完成✅ ${today}`,
+    // });
     return filePath; // 返回文件路径便于其他模块使用
   } catch (error) {
     console.error('❌ 获取数据失败:', error);
